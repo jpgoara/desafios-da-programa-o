@@ -1,0 +1,36 @@
+/** 
+ * Forward declaration of guess API.
+ * @param  num   your guess
+ * @return 	     -1 if num is lower than the guess number
+ *			      1 if num is higher than the guess number
+ *               otherwise return 0
+ * int guess(int num);
+ */
+
+class Solution {
+public:
+    int guessNumber(int n) {
+        
+        int min = 0;
+        int max = n;
+        
+        while(min <= max){
+            
+            int pivo = min + (max - min) / 2;
+            int resposta = guess(pivo);
+            
+            if(resposta < 0)
+            {
+                max = pivo - 1;
+            }            
+            else if(resposta == 0){
+                return pivo;
+            }
+            else{
+                min = pivo + 1;
+            
+            }
+        }
+    return -1;
+    }
+};
