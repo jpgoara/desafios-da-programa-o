@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<int> minSubsequence(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        
+        vector<int> res;
+        int soma = 0;
+        int aux = 0;
+        
+        for(int i = 0; i < nums.size(); i++){
+            soma += nums[i];
+        }
+        for(int i = 0; i < nums.size(); i++){
+            int a = nums.size();
+            aux += nums[a - i - 1];
+            soma -= nums[a - i - 1];
+            res.push_back(nums[a - i - 1]);
+        if(soma<aux){
+            break;
+            }
+        }
+        return res;
+    }      
+};
