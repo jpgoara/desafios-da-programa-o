@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        map <int, int> mapa;
+        for(auto &i : arr){
+            mapa[i]++;
+        }
+        
+        set <int> aux;
+        
+        for(auto j = mapa.begin() ; j != mapa.end() ; j++){
+            aux.insert(j->second);
+        }
+        if(mapa.size() == aux.size()){return true;}
+        return false;
+    }
+};

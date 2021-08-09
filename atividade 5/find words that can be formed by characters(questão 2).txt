@@ -1,0 +1,38 @@
+ class Solution {
+public:
+    int countCharacters(vector<string>& words, string chars) {
+        int res = 0;
+        unordered_map<char, int> mapa;
+    
+    for(const auto &i: chars)
+    {
+        mapa[i]++;
+    }
+    
+    const auto mapaAux = mapa;
+    
+    for(auto &i: words)
+    {
+        bool counter = true;
+        mapa = mapaAux;
+        
+        for(const auto &j: i)
+        {
+            mapa[j]--;
+            
+            if(mapa[j] < 0)
+            {
+                counter = false;
+                break;
+            }
+        }
+        
+        if(counter)
+        {
+            res += i.size();
+        }
+    }
+    
+    return res;
+    }
+  };

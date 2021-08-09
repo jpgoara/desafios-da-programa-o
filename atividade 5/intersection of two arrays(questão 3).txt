@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        int num1 = nums1.size();
+        int num2 = nums2.size();
+        
+        unordered_map<int, int> mapa;
+        vector<int> res;
+        
+        for(int i = 0; i < num1; i++){
+            if(mapa.find(nums1[i]) == mapa.end()){
+                mapa[nums1[i]] = 1;
+            }
+        }
+        for(int i = 0; i < num2; i++){
+            if(mapa.find(nums2[i])!= mapa.end() && mapa[nums2[i]] != -1){
+                mapa[nums2[i]] = -1;
+                res.push_back(nums2[i]);
+            }
+        }
+    return res;
+    }
+};

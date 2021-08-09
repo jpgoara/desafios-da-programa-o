@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int repeatedNTimes(vector<int>& nums) {
+        int tam = nums.size();
+        map<int, int> mapa;
+        
+        for(int i: nums){
+            mapa[i]++;
+            if(mapa[i]>1){
+                return i;
+            }
+        }
+        return 0;
+    }
+};
