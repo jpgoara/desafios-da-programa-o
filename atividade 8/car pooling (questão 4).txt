@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool carPooling(vector<vector<int>>& trips, int capacity) {
+          vector<int> pass(1001); 
+            int max = INT_MIN;
+        
+        for (vector<int>& trip: trips){
+            pass[trip[1]] += trip[0]; 
+            pass[trip[2]] -= trip[0];
+            if(trip[2] > max) max=trip[2];
+        }
+        int n = 0; 
+        for (int i = 0; i <= max; ++i){
+            n += pass[i]; 
+            if (n > capacity){
+                return false;
+            }
+        }
+        return true; 
+    }
+};

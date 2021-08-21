@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> xorQueries(vector<int>& arr, vector<vector<int>>& queries) {
+     vector<int> prefxor(arr.size());
+        prefxor[0] = arr[0];
+        int n = arr.size();
+        
+        for(int i=1 ; i < n ; i++){
+            prefxor[i] = arr[i]^prefxor[i-1];
+        }
+        
+        vector<int> res(queries.size());
+        int m = queries.size();
+        
+        for(int i=0 ; i < m; i++){
+               res[i] = prefxor[queries[i][0]]^prefxor[queries[i][1]]^arr[queries[i][0]];
+        }
+        return res;
+    }
+};
