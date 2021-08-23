@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> getMaximumXor(vector<int>& nums, int maximumBit) {
+        int res = 0;
+        vector<int> result;
+        int n = nums.size();
+        result.resize(n);
+        n--;
+        int number = 0;
+        int maxNumber = pow(2, maximumBit) - 1;
+        for(int i = 0; i <= n; i++)
+        {
+            res ^= nums[i];
+            number = res ^ maxNumber;
+            result[n - i] = number;
+        }
+        return result;
+    }
+};
